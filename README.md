@@ -1,7 +1,25 @@
 
+This is inspired by the original angular-on-server
 
-Demo of AngularJS running on server to pre-generate HTML for SEO purposes and initial load, as well as running subsequently on the client.
+It seems like the latest jsdom version includes a nice XmlHttprequest
 
-The detailed explanation is on a [wiki page](https://github.com/ithkuil/angular-on-server/wiki/Running-AngularJS-on-the-server-with-Node.js-and-jsdom).
+All the client code is written iin ES6 
 
-Requires rethinkdb (you must install this yourself, see link on wiki page above).  Start the application with ./run (required to install the dependencies).
+
+How to use : 
+
+
+    npm install -g gulp
+
+
+open 3 consoles: 
+
+    gulp watch-client 
+ 
+    node server/angularonserver.js server 
+    
+(So far it doesn't synchonously resolve any promises on bootstrap.) 
+
+    node server/angularonserver.js client 
+
+

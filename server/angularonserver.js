@@ -1,10 +1,9 @@
+var yargs = require('yargs');
 var Contextify = require('contextify');
 var fs = require('fs');
 var jsdom = require("jsdom");
 var preboot = require('preboot');
 var files = [
-  //'./libs/angular.min.js',
-  // './libs/angular-resource.min.js',
   './dist/client/app.js'
 ];
 
@@ -171,78 +170,6 @@ c_window.window.scrollTo = function() {};
 
 //app.set('view engine', 'hbs');
 
-app.get("*", function(req, res, next) {
-
-
-
-  var url = req.url;
-  log('Getting *, ',url);
-
-  //return res.end( getClientHtml());
-
-  config = {
-    //file: 'index.server.html',
-    file: 'index.es7.html',
-    src: fileSrc,
-    features: {
-      FetchExternalResources : false,
-      ProcessExternalResources: false
-    },
-    url: 'http://localhost:3002' + url,
-    virtualConsole: jsdom.createVirtualConsole().sendTo(console),
-    created: function (err, window) {
-      window.scrollTo = function () {};
-      window.onServer = true;
-
-    },
-    done: function (err, window) {
-      var opts = {};  // see options section below
-      c_window.window = Object.assign(c_window.window, window);
-
-      c_window.angular.bootstrap(c_window.document, ["myApp"]);
-      e = c_window.window.document.getElementById('mainDiv');
-      scope = c_window.window.angular.element(c_window.document).scope();
-
-      //preboot.getBrowserCode(opts)  // can pass callback to second param if you don't like promises
-      //    .then(function (clientCode) {
-            //c_window.window = Object.assign(c_window.window, window);
-
-            /*c_window.angular.bootstrap(c_window.document, ["myApp"]);
-
-            e = c_window.window.document.getElementById('mainDiv');
-            scope = c_window.window.angular.element(c_window.document).scope();
-            */
-            //logObject('scope', scope, 0, true);
-
-
-            setTimeout(function () {
-              //logObject('window.document.chidlren[0].innerHTML', window.document.children[0].innerHTML);
-
-              var html = '<html id="myApp">'
-                  + c_window.window.document.children[0].innerHTML
-                  + '</html>';
-              console.log(html);
-
-              res.end (html);
-      }, 1000);
-          //});
-
-    },
-    document: {
-      referer: '',
-      cookie: 'key=value; expires=Wed, Sep 21 2011 12:00:00 GMT; path=/',
-      cookieDomain: '127.0.0.1'
-
-    }
-  };
-
-
-  jsdom.debugMode = true;
-  jsdom.env(config);
-
-});
-
-
   /*old
   var e, scope;
   var url = req.url;
@@ -273,7 +200,75 @@ app.get("*", function(req, res, next) {
   }
   */
 
-app.listen(3002);
 
-console.log('Listening on port 3002');
+yargs.usage('$0  [args]')
+    .command('server', 'Generate the server side HtML, and serves it to http://localhost:3002', function (yargs, argv) {
+
+      app.get("*", function(req, res, next) {
+
+        var url = req.url;
+
+        config = {
+          file: 'index.es7.html',
+          src: fileSrc,
+          features: {
+            FetchExternalResources : false,
+            ProcessExternalResources: false
+          },
+          url: 'http://localhost:3002' + url,
+          virtualConsole: jsdom.createVirtualConsole().sendTo(console),
+          created: function (err, window) {
+            window.scrollTo = function () {};
+            window.onServer = true;
+
+          },
+          done: function (err, window) {
+            var opts = {};  // see options section below
+            c_window.window = Object.assign(c_window.window, window);
+
+            c_window.angular.bootstrap(c_window.document, ["myApp"]);
+            e = c_window.window.document.getElementById('mainDiv');
+            scope = c_window.window.angular.element(c_window.document).scope();
+
+            setTimeout(function () {
+
+              var html = '<html id="myApp">'
+                  + c_window.window.document.children[0].innerHTML
+                  + '</html>';
+
+              console.log(html);
+
+              res.end (html);
+
+            }, 1000);
+
+          },
+          document: {
+            referer: '',
+            cookie: 'key=value; expires=Wed, Sep 21 2011 12:00:00 GMT; path=/',
+            cookieDomain: '127.0.0.1'
+
+          }
+        };
+
+
+        jsdom.debugMode = true;
+        jsdom.env(config);
+
+      });
+
+
+
+      app.listen(3002);
+    })
+    .command('client', 'Generate a classic app at http://localhost:3004', function() {
+      app.get("*", function(req, res, next) {
+        return res.end( getClientHtml());
+      });
+      app.listen(3004);
+    })
+    .demand(1)
+    .help('help')
+    .argv;
+
 
