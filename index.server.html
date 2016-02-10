@@ -1,0 +1,22 @@
+<!doctype html>
+<html id="myApp">
+<head>
+
+    <base href="/">
+</head>
+<body>
+<div id="msg"></div>
+<div ng-controller="MainCtrl"  id="mainDiv">
+    Choose:
+    <a href="/Todo">Todo</a> |
+    <a href="/Main">{{vm.title}}</a>
+
+    <!--<div prerendered id="prerendered"></div>-->
+    <div ng-view id="prerendered"></div>
+    <hr />
+
+    <script src="dist/app.js"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+TODOS
+<button type="button" ng-click="archive()">Archive</button>
+<ul>
+    <li ng-repeat="todo in todos" ng-class="{'done-true': todo.done}">
+        <input type="checkbox" ng-value="todo.done" />  {{todo.text}}
+    </li>
+    <li>
+        <input type="text" ng-model="todoText" />
+        <button type="button" ng-click="addTodo()" >Add</button>
+    </li>
+</ul>
