@@ -1,16 +1,16 @@
 /**
  * Created by antoine on 9/02/16.
  */
+import {TestDecorator} from './decorators';
 
-export default class MainCtrl {
-    /*@ngInject*/
-    constructor($http, $animate){
+class MainCtrl {
+    constructor($log){
+        console.log($log);
+        $log.log('test');
+//        this.someMethod();
         console.log('MMainCntl Loaded', this);
-        this.http = $http;
-        this.animate = $animate;
     }
 
     title = 'Angular Es6 revisited';
 }
-
-
+export default MainCtrl;

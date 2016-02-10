@@ -14,12 +14,12 @@ var moduleName='myApp';
 
 
 
- angular.module(moduleName, ['ngResource', 'ngRoute'])
- .config(Routes)
- .controller('MainCtrl', MainCtrl)
- //.directive('productList', () => { new ProductList } )
- .directive('productList',ProductList)
- .controller('TodoCtrl', TodoCtrl);
+window[moduleName] = angular
+                        .module(moduleName, ['ngResource', 'ngRoute'])
+                        .config(Routes)
+                        .controller('MainCtrl', MainCtrl)
+                        .directive('productList',ProductList)
+                        .controller('TodoCtrl', TodoCtrl);
 
 if ( typeof window.onServer === 'undefined') {
     console.log(window);
@@ -27,13 +27,21 @@ if ( typeof window.onServer === 'undefined') {
 
     // Remove all the scopes
 
+
     // Remove the styles
     var x = document.head.getElementsByTagName("style");
     for (var i = x.length - 1; i >= 0; i--) {
         x[i].parentElement.removeChild(x[i]);
     }
     // empty the prerender div
-    document.getElementById('prerendered').innerHTML = '';
+    var view = document.getElementById('prerendered');
+    if (view) {
+        view.innerHTML = '';
+    }
+    else {
+        var view = '<div id="prerendered"></div>';
+        document.body.appendChild(view);
+    }
 
     var html = angular.element(document.getElementById('myApp'));
 

@@ -1,4 +1,42 @@
 
+export function Inject(ComposedComponent, dependencies) {
+
+    console.log('ComposedCompoennt = ', ComposedComponent);
+    //console.log('dep=', dependencies);
+    return class extends ComposedComponent{
+
+        constructor(...args) {
+
+
+            super(args);
+
+            if (typeof dependencies !== 'array') {
+                throw 'Dependencies of Inject must be an array of string';
+            }
+            for( var i in dependencies) {
+                this[i] = dependencies;
+            }
+            console.log(this);
+        }
+        someMethod() {
+            alert('Hello')
+        }
+    }
+}
+
+
+export function TestDecorator(ComposedComponent) {
+
+    return class extends ComposedComponent{
+
+        constructor(...args) {
+            super(args);
+        }
+        someMethod() {
+            console.log('I am a method from teh decorator');
+        }
+    }
+}
 
 export function Controller() {
 

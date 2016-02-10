@@ -164,9 +164,7 @@ app.get('/favicon.ico', function(req, res, next) {
  * HONE PAGE
  */
 
-c_window = Contextify({console : console});
-c_window.window = c_window.getGlobal();
-c_window.window.scrollTo = function() {};
+
 
 //app.set('view engine', 'hbs');
 
@@ -200,6 +198,11 @@ c_window.window.scrollTo = function() {};
   }
   */
 
+function angularServer(res, url) {
+
+
+}
+
 
 yargs.usage('$0  [args]')
     .command('server', 'Generate the server side HtML, and serves it to http://localhost:3002', function (yargs, argv) {
@@ -207,6 +210,9 @@ yargs.usage('$0  [args]')
       app.get("*", function(req, res, next) {
 
         var url = req.url;
+        c_window = Contextify({console : console});
+        c_window.window = c_window.getGlobal();
+        c_window.window.scrollTo = function() {};
 
         config = {
           file: 'index.es7.html',
@@ -220,13 +226,16 @@ yargs.usage('$0  [args]')
           created: function (err, window) {
             window.scrollTo = function () {};
             window.onServer = true;
-
           },
           done: function (err, window) {
             var opts = {};  // see options section below
             c_window.window = Object.assign(c_window.window, window);
 
             c_window.angular.bootstrap(c_window.document, ["myApp"]);
+
+            logObject('window.myApp', c_window['myApp']);
+
+
             e = c_window.window.document.getElementById('mainDiv');
             scope = c_window.window.angular.element(c_window.document).scope();
 
@@ -254,6 +263,8 @@ yargs.usage('$0  [args]')
 
         jsdom.debugMode = true;
         jsdom.env(config);
+
+
 
       });
 
