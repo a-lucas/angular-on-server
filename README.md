@@ -1,25 +1,20 @@
-
 This is inspired by the original angular-on-server
 
-It seems like the latest jsdom version includes a nice XmlHttprequest
+All the client code is written in ES6 and supports decorators 
 
-All the client code is written iin ES6 
-
-
-How to use : 
+To generate the client code, run `gulp watch-client`
 
 
-    npm install -g gulp
+For the server: 
 
-
-open 3 consoles: 
-
-    gulp watch-client 
- 
     node server/angularonserver.js server 
-    
-(So far it doesn't synchonously resolve any promises on bootstrap.) 
 
-    node server/angularonserver.js client 
+/doc/cli.client.md
 
+/doc/cli.server.md
+ 
+ 
+#todo
 
+/doc/TODO.md
+ 

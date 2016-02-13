@@ -27,7 +27,6 @@ if ( typeof window.onServer === 'undefined') {
 
     // Remove all the scopes
 
-
     // Remove the styles
     var x = document.head.getElementsByTagName("style");
     for (var i = x.length - 1; i >= 0; i--) {
@@ -43,12 +42,11 @@ if ( typeof window.onServer === 'undefined') {
         document.body.appendChild(view);
     }
 
-    var html = angular.element(document.getElementById('myApp'));
+    setTimeout(() => {
+        var html = angular.element(document.getElementById('myApp'));
+        angular.bootstrap(html, ['myApp']);
+    }, 5000);
 
-    console.log('angular', angular);
-
-    console.log('html = ', html);
-    angular.bootstrap(html, ['myApp']);
 
 } else {
     console.log('I am on th server');

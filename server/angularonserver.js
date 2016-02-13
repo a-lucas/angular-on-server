@@ -1,6 +1,11 @@
+var md = require('cli-md')
+var fs = require('fs');
+
+
+
+
 var yargs = require('yargs');
 var Contextify = require('contextify');
-var fs = require('fs');
 var jsdom = require("jsdom");
 var preboot = require('preboot');
 var files = [
@@ -203,9 +208,17 @@ function angularServer(res, url) {
 
 }
 
+var path = require('path');
+
+var MDDoc = {};
+
+MDDoc.server = fs.readFileSync( path.resolve(  './doc/cli.server.md')).toString();
+
+MDDoc.client = fs.readFileSync( path.resolve(  './doc/cli.client.md')).toString();
+
 
 yargs.usage('$0  [args]')
-    .command('server', 'Generate the server side HtML, and serves it to http://localhost:3002', function (yargs, argv) {
+    .command('server', md(MDDoc.server) , function (yargs, argv) {
 
       app.get("*", function(req, res, next) {
 
@@ -272,7 +285,7 @@ yargs.usage('$0  [args]')
 
       app.listen(3002);
     })
-    .command('client', 'Generate a classic app at http://localhost:3004', function() {
+    .command('client', md(MDDoc.client), function() {
       app.get("*", function(req, res, next) {
         return res.end( getClientHtml());
       });
