@@ -1,5 +1,5 @@
 
-### Router Caching
+### Router Caching & configuration
 
 Define the caching strategy on the server in a separate config file that supports URL rewriting (Apapche style): 
 
@@ -7,23 +7,23 @@ Define the caching strategy on the server in a separate config file that support
 ```javascript
 {
 
-  '/blog/[a-z]+/([0-9]+)`: {
-     strategy: 'custom',
-     modificationdate: function(id) {
-        return CacheService.getCachingDate
-     },
-     shouldCache: function(id) { //id is coming from the regex extraction
+  '/blog/[a-z]+/([0-9]+)': {
+     server: true,
+     strategy: function(id) { //id is coming from the regex extraction
         var cachingDate = CacheService.getCachingDate('blog', id);
         var lastModificationDate = Blog.getLastModificationDate(id);
         return cachingDate < lastModificationDate;
      }
   },
   '/weather/[a-z]*': {
-     strategy: 'periodic',
-     duration: 3600 //re-generate the cache every hour
+     strategy: 3600 //re-generate the cache every hour
   },
+  '/stocks/.*': {
+     server: true,
+     strategy: false, // never use the cache for this url 
+   },
   '/chat/.*': {
-       strategy: 'never', // never use the cache for this url 
+       server: false, // No server rendering - serve <div ng-view></div> instead 
    },
 }
 ```

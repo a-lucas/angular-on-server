@@ -25,13 +25,14 @@ if ( typeof window.onServer === 'undefined') {
     //console.log(window);
     console.log('I am on the client !!!');
 
-    // TODO: Remove all the scopes
+    // TODO: Remove all the scopes and comments
 
     // Remove the styles
     var x = document.head.getElementsByTagName("style");
     for (var i = x.length - 1; i >= 0; i--) {
         x[i].parentElement.removeChild(x[i]);
     }
+
     // empty the prerender div
     var view = document.getElementById('prerendered');
     if (view) {
@@ -43,8 +44,10 @@ if ( typeof window.onServer === 'undefined') {
     }
 
     var html = angular.element(document.getElementById('myApp'));
-    angular.bootstrap(html, ['myApp']);
 
+    setTimeout( function() {
+        angular.bootstrap(html, ['myApp']);
+    }, 5000);
 }
 
 

@@ -2,61 +2,15 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/gulpfile.js" line="16" />
-    <bookmark url="file://$PROJECT_DIR$/doc/cli.server.md" line="9" />
+    <bookmark url="file://$PROJECT_DIR$/doc/cli.server.md" line="6" />
     <bookmark url="file://$PROJECT_DIR$/server/angularonserver.js" description="yargs.usage('$0  [args]')&#10;    .command('server', '..." line="15" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7313201c-1de5-4280-88a0-e0b3b395875c" name="Default" comment="- Removed ununsed files&#10;- Add a server side logging functionality&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angular/StackQueue.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angular/httpBackend.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angular/log.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/express/express.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/httpBackendSpec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/qSpec.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/decorators/HOWTO.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/decorators/controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/angular-resource.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/angular.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/angular-es6-server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/angularSources/myQ.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/angularSources/templateRequest.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/terminal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/EmptyProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/ExceptionHandler.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/HttpBackendProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/LocationProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/LogProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/NgView.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/RouteProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/SanitizeUrlProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/SceDelegateProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/ServerFlattenPromisesProvider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/ServerRequestContext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/ngOverride.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/utils/register.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controllers/decorators.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/directives/directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/oldApp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pre-render.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testAngularContext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testJSDOM.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/angularSources/qFactory.js" afterPath="$PROJECT_DIR$/angular/q.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+    <list default="true" id="7313201c-1de5-4280-88a0-e0b3b395875c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/client/app.js" afterPath="$PROJECT_DIR$/dist/client/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/TODO.md" afterPath="$PROJECT_DIR$/doc/TODO.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/angularonserver.js" afterPath="$PROJECT_DIR$/server/angularonserver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/utils.js" afterPath="$PROJECT_DIR$/server/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cli.client.md" afterPath="$PROJECT_DIR$/doc/cli.client.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cli.server.md" afterPath="$PROJECT_DIR$/doc/cli.server.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/Main.js" afterPath="$PROJECT_DIR$/src/controllers/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/Todo.js" afterPath="$PROJECT_DIR$/src/controllers/Todo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/directives/ProductList.js" afterPath="$PROJECT_DIR$/src/directives/ProductList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes.js" afterPath="$PROJECT_DIR$/src/routes.js" />
     </list>
     <list id="60965a76-831d-46ca-8dbb-1dd33d59ea6a" name="Rejected commit: Default" comment="" />
     <ignored path="angular-on-server.iws" />
@@ -78,44 +32,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StackQueue.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angular/StackQueue.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="70" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="70" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
-            <state split_layout="FIRST">
-              <first_editor vertical-scroll-proportion="0.01718213">
-                <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-          <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.es7.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.es7.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="angularonserver.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/angularonserver.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -148,14 +64,72 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="express.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="express.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/express/express.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.85318106">
+            <state vertical-scroll-proportion="0.0">
               <caret line="122" column="2" selection-start-line="122" selection-start-column="2" selection-end-line="122" selection-end-column="2" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TODO.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/TODO.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor vertical-scroll-proportion="0.3488372">
+                <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+          <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cli.client.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/cli.client.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor vertical-scroll-proportion="0.053667262">
+                <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+          <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cli.server.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/doc/cli.server.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor vertical-scroll-proportion="0.3488372">
+                <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+          <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,16 +151,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="9" column="34" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -230,8 +194,6 @@
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/server/terminal.js" />
         <option value="$PROJECT_DIR$/doc/cli.md" />
-        <option value="$PROJECT_DIR$/doc/cli.server.md" />
-        <option value="$PROJECT_DIR$/doc/cli.client.md" />
         <option value="$PROJECT_DIR$/tests/qSpec.js" />
         <option value="$PROJECT_DIR$/angularSources.js" />
         <option value="$PROJECT_DIR$/server/q.js" />
@@ -251,14 +213,16 @@
         <option value="$PROJECT_DIR$/server/utils.js" />
         <option value="$PROJECT_DIR$/angular/log.js" />
         <option value="$PROJECT_DIR$/src/controllers/Main.js" />
-        <option value="$PROJECT_DIR$/src/app.js" />
-        <option value="$PROJECT_DIR$/doc/TODO.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/directives/ProductList.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/server/angularonserver.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/server/express/express.js" />
+        <option value="$PROJECT_DIR$/doc/TODO.md" />
+        <option value="$PROJECT_DIR$/doc/cli.client.md" />
+        <option value="$PROJECT_DIR$/src/app.js" />
+        <option value="$PROJECT_DIR$/doc/cli.server.md" />
       </list>
     </option>
   </component>
@@ -561,6 +525,19 @@
       <option name="number" value="Default" />
       <updated>1454905385821</updated>
     </task>
+    <task id="LOCAL-00001" summary="- Removed ununsed files&#10;- Add a server side logging functionality&#10;">
+      <created>1455597331040</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1455597331040</updated>
+    </task>
+    <task id="LOCAL-00002" summary="- Todo clarification">
+      <created>1455598259621</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1455598259621</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -574,9 +551,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1910" height="1043" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -608,7 +585,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Removed ununsed files&#10;- Add a server side logging functionality&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Removed ununsed files&#10;- Add a server side logging functionality&#10;" />
+    <MESSAGE value="- Todo clarification" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Todo clarification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -711,20 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/cli.server.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="11" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/httpBackendSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -733,19 +697,6 @@
             <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/cli.client.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.01718213">
-            <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/angular/q.js">
@@ -798,28 +749,6 @@
             <element signature="n#!!doc;n#MainCtrl#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/TODO.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.79037803">
-            <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -916,12 +845,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/express/express.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85318106">
+        <state vertical-scroll-proportion="0.0">
           <caret line="122" column="2" selection-start-line="122" selection-start-column="2" selection-end-line="122" selection-end-column="2" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/TODO.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.3488372">
+            <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/cli.client.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.053667262">
+            <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/cli.server.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.3488372">
+            <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>
