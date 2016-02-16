@@ -22,10 +22,10 @@ window[moduleName] = angular
                         .controller('TodoCtrl', TodoCtrl);
 
 if ( typeof window.onServer === 'undefined') {
-    console.log(window);
+    //console.log(window);
     console.log('I am on the client !!!');
 
-    // Remove all the scopes
+    // TODO: Remove all the scopes
 
     // Remove the styles
     var x = document.head.getElementsByTagName("style");
@@ -42,14 +42,9 @@ if ( typeof window.onServer === 'undefined') {
         document.body.appendChild(view);
     }
 
-    setTimeout(() => {
-        var html = angular.element(document.getElementById('myApp'));
-        angular.bootstrap(html, ['myApp']);
-    }, 5000);
+    var html = angular.element(document.getElementById('myApp'));
+    angular.bootstrap(html, ['myApp']);
 
-
-} else {
-    console.log('I am on th server');
 }
 
 

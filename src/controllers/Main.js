@@ -1,14 +1,16 @@
 /**
  * Created by antoine on 9/02/16.
  */
-import {TestDecorator} from './decorators';
 
 class MainCtrl {
     constructor($log){
-        console.log($log);
-        $log.log('test');
-//        this.someMethod();
-        console.log('MMainCntl Loaded', this);
+        $log.log('I am a log', 'with two parameters');
+        var test = {
+            name: 'value'
+        };
+
+        $log.error('I am outpuing an object', test);
+
     }
 
     title = 'Angular Es6 revisited';

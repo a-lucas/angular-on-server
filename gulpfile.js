@@ -18,11 +18,6 @@ var config = {
         entryFile: './src/app.js',
         outputDir: './dist/client',
         outputFile: 'app.js'
-    },
-    server: {
-        entryFile: '/angularonserver.es7.js',
-        outputDir: './dist/server',
-        outputFile: 'app.server.js'
     }
 };
 
@@ -30,28 +25,15 @@ var config = {
 gulp.task('cleanClient', function(cb){
     rimraf(config.client.outputDir, cb);
 });
-gulp.task('cleanServer', function(cb){
-    rimraf(config.server.outputDir, cb);
-});
 
 
 var bundlerClient;
 function getBundlerClient() {
     if (!bundlerClient) {
-        bundlerClient = watchify(browserify(config.client.entryFile, _.extend({ debug: true }, watchify.args)));
+        bundlerClient = watchify(browserify(config.client.entryFile, _.extend({debug: true}, watchify.args)));
     }
     return bundlerClient;
-};
-
-
-var bundlerServer;
-function getBundlerServer() {
-    if (!bundlerServer) {
-        bundlerServer = watchify(browserify(config.server.entryFile, _.extend({ debug: true }, watchify.args)));
-    }
-    return bundlerServer;
-};
-
+}
 
 function bundleClient() {
     return getBundlerClient()
@@ -64,29 +46,17 @@ function bundleClient() {
         .pipe(reload({ stream: true }));
 }
 
-function bundleServer() {
-    return getBundlerServer()
-        .transform(babelify)
-        .bundle()
-        .pipe(annotate())
-        .on('error', function(err) { console.log('Error: ' + err.message); })
-        .pipe(source(config.server.outputFile))
-        .pipe(gulp.dest(config.server.outputDir));
-}
 
 
 gulp.task('build-persistent-client', ['cleanClient'], function() {
     return bundleClient();
 });
 
+
 gulp.task('build-client', ['build-persistent-client'], function() {
     process.exit(0);
 });
 
-
-gulp.task('build-server', ['cleanServer'], function() {
-    return bundleServer();
-});
 
 
 gulp.task('watch-client', ['build-persistent-client'], function() {
@@ -96,13 +66,3 @@ gulp.task('watch-client', ['build-persistent-client'], function() {
     });
 });
 
-
-gulp.task("server", function () {
-    return gulp
-        .src([
-            'angularonserver.es7.js'
-        ])
-        .pipe(babel())
-        .pipe(concat("app.server.js"))
-        .pipe(gulp.dest("./"));
-});

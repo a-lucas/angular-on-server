@@ -1,235 +1,38 @@
-var md = require('cli-md')
+var md = require('cli-md');
 var fs = require('fs');
-
-
-
-
 var yargs = require('yargs');
-var Contextify = require('contextify');
 var jsdom = require("jsdom");
-var preboot = require('preboot');
-var files = [
-  './dist/client/app.js'
-];
+var utils = require('./utils');
 
-var fileSrc = [];
+var util = require('util');
+var vm = require('vm');
 
-for(var i in files) {
-  fileSrc[i] = fs.readFileSync(files[i] , 'utf8');
-}
-
-function log() {
-  var str = '';
-  for(var i in arguments) {
-    if (typeof arguments[i] === 'string' || typeof arguments[i] === 'number') { str = str + " " + arguments[i];}
-  }
-  console.log(str);
-}
-
-function logObject(name, obj, level, force) {
-  if (!force) force = false;
-  if (!level) {
-    level=0;
-  }
-  console.log('');
-  console.log('///////////', name, '////////////');
-  console.log('');
-
-  if (typeof obj === 'string' || typeof obj === 'number') {
-    console.log('value = ', obj);
-  }
-
-
-  if (typeof obj !== 'string') {
-
-    for (var i in obj) {
-      switch (typeof obj[i]) {
-        case 'string':
-        case 'number':
-          console.log('   ', i, '   =>   ', obj[i]);
-          break;
-        case 'object':
-          if (level >=1) {
-            console.log('   ', i, '   =>   //// OBJECT ////');
-            logObject ( i,  obj[i], level -1, force);
-          } else {
-            console.log('   ', i, '   =>   ', typeof obj[i]);
-          }
-          break;
-        case 'function':
-        case 'undefined':
-            if (force) {
-              console.log('   ', i, '   =>   ', typeof obj[i]);
-            }
-          break;
-        default:
-          console.log('   ', i, '   =>   ', typeof obj[i]);
-      }
-    }
-  }
-}
-
-var http = require('http');
-
-var express = require('express');
-
-var fs = require('fs');
-
-delay = function(ms, func) {
-  return setTimeout(func, ms);
-};
-
-interval = function(ms, func) {
-  return setInterval(func, ms);
-};
-
-app = express();
-
-var rootPath = __dirname + '/..';
-
-app.use("/dist", express.static(rootPath + "/dist/client"));
-app.use("/views", express.static(rootPath + "/src/views"));
-//app.use("/libs", express.static(__dirname + "/libs"));
-
-function  getClientHtml() {
-  return fs.readFileSync('index.es7.html', 'utf8');
-}
-
-
-function getServerHtml() {
-  return fs.readFileSync('index.server.html', 'utf8');
-}
-
-app.get('/', function(req, res, next) {
-  var data = getClientHtml();
-  console.log(data);
-  return res.end(data);
-});
-
-/***
- * VIEWS
- */
-products = fs.readFileSync('./src/views/products.html');
-todos = fs.readFileSync('./src/views/products.html');
-
-app.get('//products.html', function(req, res, next) {
-  return res.end(products);
-});
-
-app.get('//todos.html', function(req, res, next) {
-  return res.end(todos);
-});
-
-
-/**
- * REST API
- */
-
-getProducts = function(req, res) {
-
-  var options = {
-    host: 'fake-response.appspot.com',
-    port: 80,
-    path: '/?sleep=5'
-  };
-
-  http.get(options, function(response) {
-    console.log("Got response: " + response.statusCode);
-    return res.end(JSON.stringify([{
-      name: 'test',
-      price: 1
-    },
-      {
-        name: 'test2',
-        price: 2,
-      }]))
-  }).on('error', function(e) {
-    console.log("Got error: " + e.message);
-    return res.send(JSON.stringify([]));
-  });
-
-};
-
-app.get('//products', function(req, res, next) {
-  log('Getting //products');
-  return getProducts(req, res);
-});
-
-app.get('/products', function(req, res, next) {
-  log('Getting /products');
-  return getProducts(req, res);
-});
-
-app.get('/favicon.ico', function(req, res, next) {
-  log('Getting my empty favicon');
-  return res.send('');
-})
-
-/**
- * HONE PAGE
- */
-
-
-
-//app.set('view engine', 'hbs');
-
-  /*old
-  var e, scope;
-  var url = req.url;
-  document = jsdom(html);
-
-
-  window = document.createWindow({
-    localPrefix: 'http://localhost:3002' + url
-  });
-  e = window.document.getElementById('mainDiv');
-  if (window.angular != null) {
-    console.log('Angular is defined');
-
-    scope = window.angular.element(e).scope();
-    scope.$apply(function() {
-      scope.setLocation(req.url);
-      return void 0;
-    });
-    return delay(50, function() {
-      console.log(window.document.innerHTML);
-      return res.end(window.document.innerHTML);
-    });
-  } else {
-    console.log('window.angular is not defined');
-    console.log(window.document.innerHTML);
-    return res.end(window.document.innerHTML);
-
-  }
-  */
-
-function angularServer(res, url) {
-
-
-}
+//var preboot = require('preboot');
 
 var path = require('path');
 
 var MDDoc = {};
-
 MDDoc.server = fs.readFileSync( path.resolve(  './doc/cli.server.md')).toString();
-
 MDDoc.client = fs.readFileSync( path.resolve(  './doc/cli.client.md')).toString();
 
+var ExpressHelper = require('./express/express');
+
+var app = ExpressHelper.appServer();
+ExpressHelper.restApiMiddleWare(app);
 
 yargs.usage('$0  [args]')
     .command('server', md(MDDoc.server) , function (yargs, argv) {
 
       app.get("*", function(req, res, next) {
 
+
         var url = req.url;
-        c_window = Contextify({console : console});
-        c_window.window = c_window.getGlobal();
-        c_window.window.scrollTo = function() {};
+
+        c_window = utils.getContext();
 
         config = {
           file: 'index.es7.html',
-          src: fileSrc,
+          src: ExpressHelper.getClientJS(),
           features: {
             FetchExternalResources : false,
             ProcessExternalResources: false
@@ -239,30 +42,48 @@ yargs.usage('$0  [args]')
           created: function (err, window) {
             window.scrollTo = function () {};
             window.onServer = true;
+            window.fs = fs;
+            window.logFiles = {
+              log: path.resolve( './debug.log'),
+              error: path.resolve( './error.log')
+            }
           },
           done: function (err, window) {
             var opts = {};  // see options section below
-            c_window.window = Object.assign(c_window.window, window);
 
+
+            c_window.window = Object.assign(c_window.window, window);
             c_window.angular.bootstrap(c_window.document, ["myApp"]);
 
-            logObject('window.myApp', c_window['myApp']);
+            var e = c_window.window.document.getElementById('mainDiv');
+            var scope = c_window.window.angular.element(c_window.document).scope();
+            var rendering = false;
 
 
-            e = c_window.window.document.getElementById('mainDiv');
-            scope = c_window.window.angular.element(c_window.document).scope();
-
-            setTimeout(function () {
-
+            var getHTML = function() {
+              scope.$apply();
+              rendering = true;
               var html = '<html id="myApp">'
                   + c_window.window.document.children[0].innerHTML
                   + '</html>';
-
+              clearTimeout(serverTimeout);
+              window.close();
+              c_window.dispose();
               console.log(html);
+              return html;
+            };
 
-              res.end (html);
+            var serverTimeout = setTimeout(function() {
+              if (rendering) return;
+              console.log('SERVER TIMEOUT ! ! !');
+              res.end ( getHTML() );
+            }, 10000);
 
-            }, 1000);
+
+            c_window.window.addEventListener('StackQueueEmpty', function () {
+              if (rendering) return;
+              res.end ( getHTML() );
+            }, false);
 
           },
           document: {
