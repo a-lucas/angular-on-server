@@ -3,9 +3,9 @@
  */
 import MainCtrl from './controllers/Main';
 import TodoCtrl from './controllers/Todo';
-import * as QProvider from './../angular/q';
-import * as HttpBackendProvider from '../angular/httpBackend';
-import { logProvider }  from '../angular/log';
+import ErrorCtrl from './controllers/Error';
+
+//import {InjectServer} from '../angular/server';
 
 export default function($routeProvider, $locationProvider, $sceProvider, $provide) {
 
@@ -15,13 +15,7 @@ export default function($routeProvider, $locationProvider, $sceProvider, $provid
 
     if ( typeof window.onServer !== 'undefined') {
         console.log('ON SERVER !!!');
-
-        $provide.decorator("$log", logProvider);
-
-        $provide.provider("$q", QProvider.$QProvider);
-
-        $provide.provider("$httpBackend", HttpBackendProvider.$HttpBackendProvider);
-
+        InjectServer($provide);
     }
 
     $sceProvider.enabled(false);
@@ -35,6 +29,12 @@ export default function($routeProvider, $locationProvider, $sceProvider, $provid
     $routeProvider.when('/Todo', {
         templateUrl: './views/todos.html',
         controller: TodoCtrl,
+        controllerAs: 'vm'
+    });
+
+    $routeProvider.when('/Error', {
+        templateUrl: './views/error.html',
+        controller: ErrorCtrl,
         controllerAs: 'vm'
     });
 

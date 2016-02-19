@@ -5,11 +5,11 @@
 class MainCtrl {
     constructor($log){
         $log.log('I am a log', 'with two parameters');
-        var test = {
+        $log.warn('I am a warn');
+        $log.info('I am an info');
+        $log.error('I am error with an object', {
             name: 'value'
-        };
-
-        $log.error('I am outpuing an object', test);
+        });
 
     }
 

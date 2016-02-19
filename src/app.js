@@ -1,64 +1,27 @@
-
+import ErrorCtrl from './controllers/Error';
 import MainCtrl  from './controllers/Main';
 import TodoCtrl  from './controllers/Todo';
 import Routes from './routes';
-import angular from 'angular';
-import ngResource from 'angular-resource';
-import ngRoute from 'angular-route';
 
+//import angular from 'angular';
+//import ngResource from 'angular-resource';
+//import ngRoute from 'angular-route';
+
+import {AngularClient} from '../angular/client';
 import ProductList from './directives/ProductList';
 
-//angular.module('ngView', ['ngResource']).directive('prerendered', PreRender)
-
 var moduleName='myApp';
-
-
 
 window[moduleName] = angular
                         .module(moduleName, ['ngResource', 'ngRoute'])
                         .config(Routes)
                         .controller('MainCtrl', MainCtrl)
-                        .directive('productList',ProductList)
-                        .controller('TodoCtrl', TodoCtrl);
+                        .controller('TodoCtrl', TodoCtrl)
+                        .controller('ErrorCtrl', ErrorCtrl)
+                        .directive('productList',ProductList);
+
+
 
 if ( typeof window.onServer === 'undefined') {
-    //console.log(window);
-    console.log('I am on the client !!!');
-
-    // TODO: Remove all the scopes and comments
-
-    // Remove the styles
-    var x = document.head.getElementsByTagName("style");
-    for (var i = x.length - 1; i >= 0; i--) {
-        x[i].parentElement.removeChild(x[i]);
-    }
-
-    // empty the prerender div
-    var view = document.getElementById('prerendered');
-    if (view) {
-        view.innerHTML = '';
-    }
-    else {
-        var view = '<div id="prerendered"></div>';
-        document.body.appendChild(view);
-    }
-
-    var html = angular.element(document.getElementById('myApp'));
-
-    setTimeout( function() {
-        angular.bootstrap(html, ['myApp']);
-    }, 5000);
+    AngularClient(angular, document, 50000);
 }
-
-
-/*****
- * Architecture
- *
- *  PARENT module ng-View with directive pre-rendered
- *
- *     <div prerendered></div>
- *
- *     to bootstrap the app - no multiple views
- *
- *
- */

@@ -18,13 +18,21 @@ exports.getServerHtml = function() {
     return fs.readFileSync('index.server.html', 'utf8');
 };
 
+exports.test = function() {
+      var p = path.resolve( rootPath + '/dist/angular/server.js' );
+    var data = fs.readFileSync(p , 'utf8');
+    return eval( data);
+};
 exports.getClientJS = function() {
 
     var files = [
-        path.resolve( rootPath + '/dist/client/app.js' )
+        path.resolve( rootPath + '/node_modules/angular/angular.js' ),
+        path.resolve( rootPath + '/node_modules/angular-resource/angular-resource.js' ),
+        path.resolve( rootPath + '/node_modules/angular-route/angular-route.js' ),
+        path.resolve( rootPath + '/dist/angular/server.js' ),
+        path.resolve( rootPath + '/dist/client/app.js' ),
     ];
 
-    console.log(files);
     var fileSrc = [];
 
     for(var i in files) {
@@ -56,8 +64,9 @@ exports.appServer = function() {
 
 
     app.use("/dist", express.static(rootPath + "/dist/client"));
+    app.use("/dist2", express.static(rootPath + "/dist/angular"));
     app.use("/views", express.static(rootPath + "/src/views"));
-
+    app.use("/node_modules", express.static(rootPath + "/node_modules"));
     /*app.get('/', function(req, res, next) {
         var data = getClientHtml();
         return res.end(data);
