@@ -4,6 +4,24 @@
 
 var Contextify = require('contextify');
 var fs = require('fs');
+var path = require('path');
+
+var rootPath = __dirname + '/../';
+
+exports.getClientJS = function() {
+    var files = [
+
+       // path.resolve( rootPath + '/build-angular-engine/angular.js' ),
+       // path.resolve( rootPath + '/build-angular-engine/angular-resource.js' ),
+       // path.resolve( rootPath + '/build-angular-engine/angular-route.js' ),
+        path.resolve( rootPath + '/dist/client/app.js' ),
+    ];
+    var fileSrc = [];
+    for(var i in files) {
+        fileSrc[i] = fs.readFileSync(files[i] , 'utf8');
+    }
+    return fileSrc;
+};
 
 exports.getContext = function(){
     c_window = Contextify({
@@ -23,7 +41,12 @@ exports.closeSession = function( c_window, window ) {
     }
     window.close();
     if (c_window) {
-        c_window.dispose();
+        try {
+            c_window.dispose();
+        }
+        catch (e) {
+            console.error('c_window.dispose() error');
+        }
     } else {
         console.error('No c_window provided');
     }

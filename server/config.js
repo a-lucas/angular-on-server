@@ -18,22 +18,10 @@ exports.serverConfig = {
             viewRegex: /\.html/i
         },
         logFiles: {
-            log:  {
-                path: path.resolve( './logs/log.log'),
-                stack: false
-            },
-            warn:  {
-                path: path.resolve( './logs/warn.log'),
-                stack: false
-            },
-            info: {
-                path: path.resolve('./logs/info.log'),
-                stack: false
-            },
-            error: {
-                path: path.resolve('./logs/error.log'),
-                stack: true
-            },
+            log:  path.resolve( './logs/log.log'),
+            warn: path.resolve( './logs/warn.log'),
+            info: path.resolve('./logs/info.log'),
+            error: path.resolve('./logs/error.log')
         }
 
 };

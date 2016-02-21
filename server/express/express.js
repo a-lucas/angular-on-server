@@ -13,45 +13,18 @@ exports.getClientHtml = function() {
     return fs.readFileSync('index.es7.html', 'utf8');
 };
 
-
 exports.getServerHtml = function() {
     return fs.readFileSync('index.server.html', 'utf8');
 };
 
 exports.test = function() {
-      var p = path.resolve( rootPath + '/dist/angular/server.js' );
+    var p = path.resolve( rootPath + '/dist/angular/server.js' );
     var data = fs.readFileSync(p , 'utf8');
     return eval( data);
 };
-exports.getClientJS = function() {
 
-    var files = [
-        path.resolve( rootPath + '/node_modules/angular/angular.js' ),
-        path.resolve( rootPath + '/node_modules/angular-resource/angular-resource.js' ),
-        path.resolve( rootPath + '/node_modules/angular-route/angular-route.js' ),
-        path.resolve( rootPath + '/dist/angular/server.js' ),
-        path.resolve( rootPath + '/dist/client/app.js' ),
-    ];
-
-    var fileSrc = [];
-
-    for(var i in files) {
-        fileSrc[i] = fs.readFileSync(files[i] , 'utf8');
-    }
-
-    return fileSrc;
-
-};
-
-exports.appServer = function() {
-
-    var app = express();
-
-
+exports.appStatic = function(app) {
     //app.use(helmet());
-
-
-
     app.get("*", function(req, res, next) {
         var url = req.url
         console.log('APP REQUESTING ', url);
@@ -62,26 +35,29 @@ exports.appServer = function() {
         next();
     });
 
-
     app.use("/dist", express.static(rootPath + "/dist/client"));
-    app.use("/dist2", express.static(rootPath + "/dist/angular"));
     app.use("/views", express.static(rootPath + "/src/views"));
-    app.use("/node_modules", express.static(rootPath + "/node_modules"));
+    //app.use("/node_modules", express.static(rootPath + "/node_modules"));
+    app.use("/build-angular-engine", express.static(rootPath + "/build-angular-engine"));
+
     /*app.get('/', function(req, res, next) {
-        var data = getClientHtml();
-        return res.end(data);
-    });*/
+     var data = getClientHtml();
+     return res.end(data);
+     });*/
 
     app.get('/favicon.ico', function(req, res, next) {
         return res.send('');
     });
 
     return app;
-
 };
 
-exports.restApiMiddleWare = function(app) {
+exports.appServer = function() {
+    var app = express();
+    return app;
+};
 
+exports.appREST = function(app) {
 
     app.get("*", function(req, res, next) {
         var url = req.url
@@ -89,21 +65,14 @@ exports.restApiMiddleWare = function(app) {
         if ( ! /\.html/i.test(url) ) {
             //this is a view
             console.log('This is probably a rest API call ', url);
-
-
+        } else {
+            console.log('This is a view call ', url);
         }
         next();
     });
 
     var getProducts = function(req, res) {
-
-        var options = {
-            host: 'fake-response.appspot.com',
-            port: 80,
-            path: '/?sleep=1'
-        };
-
-        http.get(options, function(response) {
+        setTimeout( function() {
             return res.end(JSON.stringify([
                 {
                     name: 'test',
@@ -113,10 +82,7 @@ exports.restApiMiddleWare = function(app) {
                     name: 'test2',
                     price: 2,
                 }]))
-        }).on('error', function(e) {
-            console.log("Got error: " + e.message);
-            return res.send(JSON.stringify([]));
-        });
+        },2000);
     };
 
     app.get('//products', function(req, res, next) {
@@ -128,5 +94,4 @@ exports.restApiMiddleWare = function(app) {
     });
 
     return app;
-
 };

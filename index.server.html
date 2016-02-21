@@ -1,23 +1,23 @@
 <!doctype html>
 <html id="myApp">
-<head>
+    <head>
+        <base href="/">
+    </head>
+    <body>
+        <div id="msg"></div>
+        <div ng-controller="MainCtrl as vm"  id="mainDiv">
 
-    <base href="/">
-</head>
-<body>
-<div id="msg"></div>
-<div ng-controller="MainCtrl"  id="mainDiv">
-    Choose:
-    <a href="/Todo">Todo</a> |
-    <a href="/Main">{{vm.title}}</a>
-    <a href="/Error">Error</a>
+            Choose:
 
-    <!--<div prerendered id="prerendered"></div>-->
-    <div ng-view id="prerendered"></div>
-    <hr />
+            <a href="/Todo">Todo</a> |
+            <a href="/Main">{{vm.title}}</a>
+            <a href="/Error">Error</a>
 
-    <script src="dist/app.js"></script>
+            <div ng-view id="prerendered"></div>
 
-</div>
-</body>
+            <hr />
+
+        </div>
+
+    </body>
 </html>

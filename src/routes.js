@@ -7,16 +7,8 @@ import ErrorCtrl from './controllers/Error';
 
 //import {InjectServer} from '../angular/server';
 
-export default function($routeProvider, $locationProvider, $sceProvider, $provide) {
+export default function($routeProvider, $locationProvider, $sceProvider) {
 
-    if ( typeof window.onServer === 'undefined') {
-        console.log('ON CLIENT !!!');
-    }
-
-    if ( typeof window.onServer !== 'undefined') {
-        console.log('ON SERVER !!!');
-        InjectServer($provide);
-    }
 
     $sceProvider.enabled(false);
 
