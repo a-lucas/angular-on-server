@@ -33,6 +33,7 @@ yargs.usage('$0  [args]')
 
         var url = req.url;
 
+
         c_window = utils.getContext();
 
         config = {
